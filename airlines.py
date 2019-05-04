@@ -61,9 +61,10 @@ def scrape_airport(departure_time, origin_code, dest_code, flight_number):
             #Seat Map Page
             seats = driver.find_elements_by_class_name('regular')
             for seat in seats:
-                print(seat.text)
-            import pdb
-            pdb.set_trace()
+                if seat.text:
+                    print(seat.text, "available")
+                else:
+                    print("unavailable :(")
             break
         else:
             driver.find_element_by_id('lightbox-close').click()
